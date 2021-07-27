@@ -13,7 +13,7 @@
                         <h3 class="text-center">Login</h3>
                     </div>
                     <div class="panel-body">
-                        <form action="{%url "login" %}" method="POST">
+                        <form action="{%url 'login' %}" method="POST">
                             {% csrf_token %}
                             {% bootstrap_form form %}
                             <div class="form-group">
@@ -24,8 +24,8 @@
                     </div>
                     <p>Do not have an account? Register
                     <p>
-                        <a href="{% url "employer_register" %}">as Employer</a> OR
-                        <a href="{% url "client_register" %}">as
+                        <a href="{% url 'employer_register' %}">as Employer</a> OR
+                        <a href="{% url 'client_register' %}">as
                             a Client</a>
                 </div>
             </div>

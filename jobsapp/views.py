@@ -4,7 +4,7 @@ from .models import User
 from django.contrib.auth import login,authenticate,logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
-from .forms import ClientRegistrationForm, EmployerRegistrationForm
+from .forms import ClientRegistrationForm, EmployerRegistrationForm, JobApplicationForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from django.shortcuts import get_object_or_404
@@ -62,5 +62,12 @@ def logout_request(request):
     logout(request)
     return redirect('login')
     
-       
-
+     #application form  
+def applyLinkup(request):
+    form=JobApplicationForm()
+    if request.method=='POST':
+        form=JobApplicationForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    return render(request,'applyjob.html',{'form':form})

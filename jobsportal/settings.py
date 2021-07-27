@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'jobsapp.apps.JobsappConfig',
 ]
 
 MIDDLEWARE = [
@@ -73,14 +74,14 @@ WSGI_APPLICATION = 'jobsportal.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'onlinejob',
-        'USER': 'moringa',
-        'PASSWORD':'Access',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'onlinejob',
+#         'USER': 'moringa',
+#         'PASSWORD':'Access',
+#     }
+# }
 
 
 # Password validation

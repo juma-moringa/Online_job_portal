@@ -18,6 +18,9 @@ from django.views.decorators.csrf import csrf_exempt
 def index(request):
     return render(request,'index.html')
 
+def landingpage(request):
+    return render(request,"landingpage.html")
+    
 class client_register(CreateView):
     model = User
     form_class = ClientRegistrationForm
@@ -59,7 +62,5 @@ def logout_request(request):
     logout(request)
     return redirect('login')
     
-def landingpage(request):
-    return render(request,"landingpage.html")
        
 

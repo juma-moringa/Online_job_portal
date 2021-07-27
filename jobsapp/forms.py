@@ -1,5 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm
-from .models import Employer, User,Client
+from django.forms.models import ModelForm
+from .models import Candidates, Employer, User,Client
 from django.db import transaction
 from django import forms 
 
@@ -31,3 +32,11 @@ class EmployerRegistrationForm(UserCreationForm):
         employer = Employer.objects.create(user=user)
         employer.save()
         return user  
+
+
+
+class JobApplicationForm(ModelForm):
+    class Meta:
+        model = Candidates
+        fields = ['name','birth_date','gender','phone_number','email','resume','company']       
+

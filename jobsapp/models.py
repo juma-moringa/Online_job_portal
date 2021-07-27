@@ -38,14 +38,15 @@ class Company(models.Model):
 
     #candidates model class
 class Candidates(models.Model):
-    gender_selection = (('Male', 'male'),('Female', 'female'))
+    gender_selection = (('Male', 'male'),('Female', 'female'),('Prefer not to say','prefer not to say'))
     name = models.CharField(max_length=100, null=True)
-    dob = models.DateField(null=True)
-    gender = models.CharField(choices=gender_selection, max_length=50, null=True )
-    mobile = models.CharField(max_length=60, null=True)
     email = models.CharField(max_length=60, null=True)
-    resume = models.FileField(null=True)
+    phone_number = models.IntegerField(default=0, null=True)
+    birth_date = models.DateField(null=True)
     company = models.ManyToManyField(Company, blank=True)
+    gender = models.CharField(choices=gender_selection, max_length=50, null=True )
+    resume = models.FileField(null=True)
+    
 
     def __str__ (self):
         return self.name

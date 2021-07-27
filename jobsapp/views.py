@@ -58,6 +58,7 @@ def login_request(request):
 def logout_request(request):
     logout(request)
     return redirect('login')
+    
 def landingpage(request):
     return render(request,"landingpage.html")
        

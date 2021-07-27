@@ -34,7 +34,6 @@ class EmployerRegistrationForm(UserCreationForm):
         return user  
 
 
-
 class JobApplicationForm(ModelForm):
     class Meta:
         model = Candidates

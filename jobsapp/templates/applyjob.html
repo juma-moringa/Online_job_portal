@@ -1,41 +1,30 @@
-
 <div class="cla" style="font-family: 'Bellefair', serif;">
     {%extends "accounts/base.html"%}
     {% load bootstrap3 %}
     {%load static%}
     {% block content %}
-    <div class="container" style="font-family: 'Bellefair', serif;">
+    <div class="container" style="font-family: 'Bellefair', serif;;">
         <div class="row">
-
             <div class="col-md-6 mx-auto card p-5 mt-5">
                 <div class="panel panel-default">
-
                     <div class="panel-heading">
                         <h3 class="text-center">Link up jobs</h3>
-                        <h3 class="text-center">Sign up</h3>
+                        <h3 class="text-center">Job Application Form</h3>
                     </div>
                     <div class="panel-body">
-
-                        <form action="{%url 'employer_register' %}" method="POST">
+                        <form action="{%url 'apply' %}" method="POST">
                             {% csrf_token %}
                             {% bootstrap_form form %}
                             <div class="form-group">
-                                <input type="submit" class="btn btn-primary btn-lg" value="Register">
+                                <input type="submit" class="btn btn-info btn-lg" value="Apply">
                             </div>
                             <input type="hidden" name="next" value="{{next}}">
-
                         </form>
-                        <div class="form-group">
-                            <label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms &amp; Conditions of Linkup jobs</a></label>
-                        </div>
                     </div>
-                    <p>Already have an account? <a href="/login"> Log In</a></p>
                 </div>
-
             </div>
         </div>
     </div>
 </div>
-
 {% endblock %}
 </div>

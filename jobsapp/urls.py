@@ -6,7 +6,7 @@ from django.conf import settings
 from django.urls import path
 
 urlpatterns=[
-    url(r'^$',views.login_request, name='index'),
+    url(r'^$',views.index, name='index'),
     path('landingpage/',views.landingpage,name = 'landingpage'),
     path('client_register/',views.client_register.as_view(),name = 'client_register'),
     path('employer_register/',views.employer_register.as_view(),name = 'employer_register'),

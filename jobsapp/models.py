@@ -24,7 +24,7 @@ class Client(models.Model):
 
     #company model class
 class Company(models.Model):
-    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE )
     name = models.CharField(max_length=100, null=True)
     position = models.CharField(max_length=100, null=True)
     description = models.CharField(max_length=500, null=True)

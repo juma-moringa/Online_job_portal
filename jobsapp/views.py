@@ -64,10 +64,13 @@ def logout_request(request):
     
      #application form  
 def applyLinkup(request):
-    form=JobApplicationForm()
     if request.method=='POST':
         form=JobApplicationForm(request.POST,request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('home')
+        if  form.is_valid():
+            applicant = form.save(commit=False)
+            applicant.user = request.user
+            applicant.save()
+            return redirect('index')
+    else:
+        form = JobApplicationForm()        
     return render(request,'applyjob.html',{'form':form})

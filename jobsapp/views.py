@@ -76,7 +76,7 @@ def applyLinkup(request):
 
 
 def home(request):
-    if request.user.is_authenticated:
+    if request.user.is_authenticated and request.user.is_employer:
         candidates=Candidates.objects.filter(company__name=request.user.username)
         candidate = Candidates.objects.all()
         return render(request,'All_applicants.html',{'candidates':candidates,'applicants':candidate})

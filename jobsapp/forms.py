@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.forms.models import ModelForm
-from .models import Candidates, Employer, User,Client
+from .models import Candidates, Company, Employer, User,Client
 from django.db import transaction
 from django import forms 
 
@@ -39,3 +39,10 @@ class JobApplicationForm(ModelForm):
         model = Candidates
         fields = ['name','birth_date','gender','phone_number','email','resume','company']       
 
+class AddjobForm(ModelForm):
+    class Meta:
+        model = Company
+        fields = ['name','position','description','salary','experience','Location']  
+
+
+   

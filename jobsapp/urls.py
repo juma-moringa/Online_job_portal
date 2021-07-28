@@ -12,6 +12,7 @@ urlpatterns=[
     url('logout/', auth_views.LogoutView.as_view(template_name='registration/logout.html'), name='logout'),
     url('profile/',views.home, name='profile'), 
     path('apply/',views. applyLinkup, name='apply'),
+    path('addjob/',views. addjob, name='addjob'),
     path('landingpage/',views.landingpage,name = 'landingpage'),
     path('client_register/',views.client_register.as_view(),name = 'client_register'),
     path('employer_register/',views.employer_register.as_view(),name = 'employer_register'),

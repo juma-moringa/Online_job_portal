@@ -4,7 +4,7 @@ from .models import Candidates, Company, User
 from django.contrib.auth import login,authenticate,logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
-from .forms import ClientRegistrationForm, EmployerRegistrationForm, JobApplicationForm
+from .forms import AddjobForm, ClientRegistrationForm, EmployerRegistrationForm, JobApplicationForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from django.shortcuts import get_object_or_404
@@ -73,7 +73,17 @@ def applyLinkup(request):
     else:
         form = JobApplicationForm()        
     return render(request,'applyjob.html',{'form':form})
-
+    
+@login_required(login_url='/accounts/login/') 
+def addjob(request):
+    if request.method=='POST':
+        form=AddjobForm(request.POST,request.FILES)
+        if  form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = AddjobForm()        
+    return render(request,'addjob.html',{'form':form})
 
 def home(request):
     if request.user.is_authenticated and request.user.is_employer:

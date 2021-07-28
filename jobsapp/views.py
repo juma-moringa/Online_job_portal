@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import CreateView
-from .models import User
+from .models import Candidates, Company, User
 from django.contrib.auth import login,authenticate,logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
@@ -62,15 +62,39 @@ def logout_request(request):
     logout(request)
     return redirect('login')
     
-     #application form  
+     #application form 
+@login_required(login_url='/accounts/login/') 
 def applyLinkup(request):
     if request.method=='POST':
         form=JobApplicationForm(request.POST,request.FILES)
         if  form.is_valid():
-            applicant = form.save(commit=False)
-            applicant.user = request.user
-            applicant.save()
-            return redirect('index')
+            form.save()
+            return redirect('home')
     else:
         form = JobApplicationForm()        
     return render(request,'applyjob.html',{'form':form})
+
+
+def home(request):
+    if request.user.is_authenticated:
+        candidates=Candidates.objects.filter(company__name=request.user.username)
+        candidate = Candidates.objects.all()
+        return render(request,'All_applicants.html',{'candidates':candidates,'applicants':candidate})
+    else:
+        jobs=Company.objects.all()
+        return render(request,'All_jobs.html',{'jobs':jobs,})
+
+@login_required(login_url='/accounts/login/')
+def search_job(request):
+    if 'position' in request.GET and request.GET["position"]:
+        search_term = request.GET.get("position")
+        found_job = Company.search_by_name(search_term)
+        message = f"{search_term}"
+        return render(request, 'search.html',{"found_job":found_job,"message":message})
+    else:
+        message = "No matches found"
+        return render(request, 'search.html',{"message":message})
+
+
+
+

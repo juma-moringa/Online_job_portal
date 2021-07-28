@@ -31,9 +31,16 @@ class Company(models.Model):
     salary = models.IntegerField(null=True)
     experience = models.IntegerField(null=True)
     Location = models.CharField(max_length=100, null=True)
+    
 
     def __str__ (self):
         return self.name
+
+    @classmethod
+    def search_by_position(cls,search_term):
+    	jobs = cls.objects.filter(position__icontains=search_term)
+    	return jobs
+  
 
 
     #candidates model class

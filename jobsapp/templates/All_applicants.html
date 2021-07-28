@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static%}
+{% block content %}
+<br>
+<div class="container card">
+    <h3> Current Available openings</h3>
+    <div class="card-body">
+        <table class="table table-hover">
+            <tr>
+                <th style="font-size:16px ;color:blue;">Company Name</th>
+                <th style="font-size:16px ;color:blue;">Position</th>
+                <th style="font-size:16px ;color:blue;">Job Description</th>
+                <th style="font-size:16px ;color:blue;">Salary</th>
+                <th style="font-size:16px ;color:blue;" >Experience</th>
+                <th style="font-size:16px ;color:blue;">Location</th>
+                <th style="font-size:16px ;color:blue;">Apply job</th>
+            </tr>
+            {% for job in jobs %}
+            <tr>
+                <td style="font-size:13px">{{job.name}}</td>
+                <td style="font-size:13px">{{job.position}}</td>
+                <td style="font-size:13px">{{job.description}}</td>
+                <td style="font-size:13px">{{job.salary}}</td>
+                <td style="font-size:13px">{{job.experience}} years</td>
+                <td style="font-size:13px">{{job.Location}}</td>
+                <td style="font-size:13px"><a href="{% url 'apply' %}" class="btn btn-info btn-sm" type="submit">Apply</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+<div class="container card" >
+    <h1 style="font-family: 'Bellefair', serif;;">Current Jobseekers</h1>
+    <div class="card-body">
+        <table class="table table-hover">
+            <tr class="table-success"> 
+                <b><th style="font-size:16px">Name</th></b>
+                <b><th style="font-size:16px">Email</th></b>
+                <b><th style="font-size:16px">Birth Date</th></b>
+                <b><th style="font-size:16px">Resume</th></b>
+                <b><th style="font-size:16px">Mobile</th></b>
+                <b><th style="font-size:16px">Gender</th></b> 
+            </tr>
+            {% for app in applicants %}
+                <tr class="table-info">
+                    <td  style="font-size:13px">{{app.name}}</td>
+                    <td  style="font-size:13px"><a href = "mailto: {{app.email}}">{{app.email}}</a></td>
+                    <td  style="font-size:13px">{{app.birth_date}}</td>
+                    {% if app.resume %}
+                    <td  style="font-size:13px"><a href='{{app.resume.url}}' view >{{app.resume}}</a></td>
+                    {% else %}
+                    <td  style="font-size:13px"> Resume Not Available</td>
+                    {% endif %}
+                    <td  style="font-size:13px">{{app.phone_number}}</td>
+                    <td  style="font-size:13px">{{app.gender}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+{% endblock %}

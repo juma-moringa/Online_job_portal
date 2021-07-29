@@ -1,0 +1,3 @@
+Hello {{name}}.
+Welcome to Link up jobs. You will find the most exciting news and updates available on our website.
+jaycreations-2021

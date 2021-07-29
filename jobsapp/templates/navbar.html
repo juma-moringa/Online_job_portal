@@ -326,7 +326,7 @@
 			<ul class="nav navbar-nav">
 				<li><a href="/">Home</a></li>
 				<li><a href="about/">About</a></li>
-				<!-- <li><a href="searched/">Search</a></li> -->
+				<li><a href="#openings">Apply</a></li>
 			</ul>
 			<form class="navbar-form form-inline" action="{% url 'search' %}" role="search">
 				<div class="input-group search-box">
@@ -349,7 +349,9 @@
 							<li class="divider"></li>
 							<li><a href="logout/ " onclick="return confirm('Are you sure you want to log out?')"><i class="material-icons">&#xE8AC;</i>Logout</a></li>
 							{% else %}
+							
 							<a class="nav-link btn btn-primary button" href="{% url 'login' %}">Login</a>
+							
 							<li class="dropdown">
 								<a href="#" data-toggle="dropdown" class="dropdown-toggle user-action button btn btn-primary" >Register<b
 										class="caret"></b></a>
@@ -363,6 +365,9 @@
 										<a class="nav-link" href="{% url 'employer_register' %}">
 											<h5>As Employer</h5>
 										</a>
+									</li>
+									<li>
+										<a class="nav-link btn btn-primary button" href="{% url 'newsToday' %}">Subscribe</a>
 									</li>
 								</ul>
 							</li>

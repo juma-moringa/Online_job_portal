@@ -1,0 +1,29 @@
+{%extends 'base.html'%}
+{% load static %}
+{% load bootstrap3 %}
+{% block content %}
+{{block.super}}
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<div id ="banner" class="container">
+    <div class="container-fluid">
+
+        <form action="{%url 'newsToday'%}" method="post">
+            {%csrf_token%}
+
+            {% for field in letterForm %}
+            {% bootstrap_field field %}
+            {% endfor %}
+            <input type="submit" value="Subscribe">
+        </form>
+    </div>
+    {% endblock %}
+    {% block scripts %}
+    {{block.super}}
+    <script type="text/javascript" src="{%static 'js/newsletter.js'%}"></script>
+    {% endblock %}
+</div>

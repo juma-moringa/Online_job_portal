@@ -20,6 +20,8 @@ urlpatterns=[
     path('login/',views.login_request,name = 'login'),
     path('logout/',views.logout_request,name = 'logout'),
     url('searched/', views.search_job, name='search'),
+    url(r'^ajax/newsletter/$', views.newsletter, name='newsletter'),
+    url('subscribe/',views.news_today,name='newsToday'),
   
 
 ]

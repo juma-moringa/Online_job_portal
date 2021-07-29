@@ -1,16 +1,20 @@
 from django.shortcuts import render
 from django.views.generic import CreateView
-from .models import Candidates, Company, User
+from .models import Candidates, Company, NewsLetterRecipients, User
 from django.contrib.auth import login,authenticate,logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
-from .forms import AddjobForm, ClientRegistrationForm, EmployerRegistrationForm, JobApplicationForm
+from .forms import AddjobForm, ClientRegistrationForm, EmployerRegistrationForm, JobApplicationForm, NewsLetterForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from django.shortcuts import get_object_or_404
 from django.http import Http404
 from django.core.exceptions import ObjectDoesNotExist
 from django.views.decorators.csrf import csrf_exempt
+from .email import send_welcome_email
+from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
+
 
 
 
@@ -106,6 +110,19 @@ def search_job(request):
         message = "No matches found"
         return render(request, 'search.html',{"message":message})
 
+#ajax code
+def newsletter(request):
+    name = request.POST.get('your_name')
+    email = request.POST.get('email')
+    recipient = NewsLetterRecipients(name=name, email=email)
+    recipient.save()
+    send_welcome_email(name, email)
+    data = {'success': 'You have been successfully added to our weekly mailing list'}
+    return JsonResponse(data)
 
 
-
+def news_today(request):
+   
+    form = NewsLetterForm()
+    return render(request, 'today-news.html', {"letterForm":form})
+    

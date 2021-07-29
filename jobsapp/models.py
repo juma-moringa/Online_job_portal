@@ -60,7 +60,9 @@ class Candidates(models.Model):
 
     def __str__ (self):
         return self.name
-
+        
+    def save_candidate(self):
+        self.save()
 
 class NewsLetterRecipients(models.Model):
     name = models.CharField(max_length = 30)

@@ -35,6 +35,9 @@ class Company(models.Model):
 
     def __str__ (self):
         return self.name
+        
+    def save_company(self):
+        self.save()
 
     @classmethod
     def search_by_position(cls,search_term):

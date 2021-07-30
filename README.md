@@ -6,7 +6,7 @@
 
 ## Description
 
-Online Job portal is a Django website application that allows  registered users - for the jobseekers to find available job listings and apply ,and as for the employers to post the vacant positions in their companies to be updated about everything happening in their neighborhood
+Online Job portal is a Django website application that allows  registered users - for the jobseekers to find available job listings and apply ,and as for the employers to post the vacant positions in their companies for the qualified canditates available.
 
 ## Set Up and Installations
 
